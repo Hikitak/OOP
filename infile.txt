@@ -1,0 +1,8 @@
+7
+Kadatsky Nikita Sergeevitch 1 7 2002 303 stajer
+Svetlov Andrey Vladimirivich 3 8 1990 303 prepodavatel
+Qwertiv Anton Antonovich 4 7 1971 203 president
+Weriev Nikolay Stepanovich 4 8 1970 103 ohranik
+Valentiniv Valentin Valentinovich 3 3 1950 203 nachalnik_otdela
+Juj qwertyuiop Antonovskyy 4 5 1980 103 starshy_stajer
+Vaslili Valili Valili 6 7 1970 203 artist
