@@ -18,8 +18,16 @@ struct employee{
     string position;
 };
 typedef struct employee employee;
+void enter_struct(employee *a, int n, ifstream & FILE ){
+    for(int i=0;i<n;i++)
+        FILE>>a[i].sname>>a[i].name>>a[i].patronymic>>a[i].date.day>>a[i].date.month
+           >>a[i].date.year>>a[i].division>>a[i].position;
+
+}
+
 void fun1(employee *a, int n){
     int q;
+    cout<<"Enter division you require for\n";
     cin>>q;
     //ofstream outfile;
     //outfile.open("outfile.txt", ios::app);
@@ -32,7 +40,7 @@ void fun1(employee *a, int n){
     //outfile<<"\n\n";
     //outfile.close();
 }
-void fun2(employee *a, int n){
+void fun2(employee *a, int n, ofstream &FILE){
     //ofstream outfile;
     //outfile.open("outfile.txt", ios::app);
     time_t now = time(0);
@@ -44,26 +52,23 @@ void fun2(employee *a, int n){
                 <<a[i].patronymic<<" "<<a[i].date.day<<'.'<<(a[i].date.month <= 9 ? "0" : "" )
                 <<a[i].date.month<<'.'<<a[i].date.year<<" "<<a[i].division<<" "
                 <<a[i].position<<endl;
-            /*outfile<<a[i].sname<<" "<<a[i].name<<" "
+            FILE<<a[i].sname<<" "<<a[i].name<<" "
                 <<a[i].patronymic<<" "<<a[i].date.day<<'.'<<(a[i].date.month <= 9 ? "0" : "" )
                 <<a[i].date.month<<'.'<<a[i].date.year<<" "<<a[i].division<<" "
-                <<a[i].position<<endl;*/
+                <<a[i].position<<endl;
         }
     }
     //outfile<<"\n\n";
-    //outfile.close();
+    FILE.close();
 }
 int main(){
-
     int n;
     ifstream infile; // Создаем потоковый объект infile ...
     // ... класса ifstream для чтения из файла
     infile.open("infile.txt"); // Открываем поток, связывая его с файлом
     infile>>n;
     employee *a= new employee[n];
-    for(int i=0;i<n;i++)
-        infile>>a[i].sname>>a[i].name>>a[i].patronymic>>a[i].date.day>>a[i].date.month
-           >>a[i].date.year>>a[i].division>>a[i].position;
+    enter_struct(a,n,infile);
     infile.close();
     int w=-1;
     while(w!=0){
@@ -73,9 +78,11 @@ int main(){
             case 1:
                 fun1(a,n);
                 break;
-            case 2:
-                fun2(a,n);
-                break;
+            case 2:{
+                ofstream outfile;
+                outfile.open("outfile.txt");
+                fun2(a,n,outfile);
+                break;}
             default:
                 cout<<"Quited\n";
                 break;
