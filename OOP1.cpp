@@ -2,13 +2,13 @@
 #include<string>
 #include <ctime>
 /*
-Kadatsky Nikita Sergeevitch 1 7 2002 303 stajer
-Svetlov Andrey Vladimirivich 3 8 1990 303 prepodavatel
-Qwertiv Anton Antonovich 4 7 1971 203 president
-Weriev Nikolay Stepanovich 4 8 1970 103 ohranik
+Kadatsky Nikita Sergeevitch       1 7 2002 303 stajer
+Svetlov Andrey Vladimirivich      3 8 1990 303 prepodavatel
+Qwertiv Anton Antonovich          4 7 1971 203 president
+Weriev Nikolay Stepanovich        4 8 1970 103 ohranik
 Valentiniv Valentin Valentinovich 3 3 1950 203 nachalnik_otdela
-Juj qwertyuiop Antonovskyy 4 5 1980 103 starshy_stajer
-Vaslili Valili Valili 6 7 1970 203 artist
+Juj qwertyuiop Antonovskyy        4 5 1980 103 starshy_stajer
+Vaslili Valili Valili             6 7 1970 203 artist
 */
 using namespace std;
 struct bday{
@@ -26,6 +26,11 @@ struct employee{
     string position;
 };
 typedef struct employee employee;
+void enter_struct(employee *a, int n){
+    for(int i=0;i<n;i++)
+        cin>>a[i].sname>>a[i].name>>a[i].patronymic>>a[i].date.day>>a[i].date.month
+           >>a[i].date.year>>a[i].division>>a[i].position;
+}
 void fun1(employee *a, int n){
     int q;
     cin>>q;
@@ -51,11 +56,11 @@ void fun2(employee *a, int n){
 int main(){
 
     int n;
+    cout<<"Enter quantity of employees\n";
     cin>>n;
     employee a[n];
-    for(int i=0;i<n;i++)
-        cin>>a[i].sname>>a[i].name>>a[i].patronymic>>a[i].date.day>>a[i].date.month
-           >>a[i].date.year>>a[i].division>>a[i].position;
+
+    enter_struct(a,n);
     int w=-1;
     while(w!=0){
         cout<<"Enter task:\n1)Display names of employee of chosen division\n2)Display data of all employee beyond 50 years old\n0)Quit\n";
