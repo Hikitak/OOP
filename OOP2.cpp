@@ -25,7 +25,7 @@ void enter_struct(employee *a, int n, ifstream & FILE ){
 
 }
 
-void fun1(employee *a, int n){
+void fun1(employee *a, int n, ofstream &FILE){
     int q;
     cout<<"Enter division you require for\n";
     cin>>q;
@@ -35,10 +35,11 @@ void fun1(employee *a, int n){
         if(a[i].division==q){
             cout<<a[i].sname<<" "<<a[i].name<<" "<<a[i].patronymic<<" "<<a[i].position<<endl;
             //outfile<<a[i].sname<<" "<<a[i].name<<" "<<a[i].patronymic<<" "<<a[i].position<<endl;
+            FILE<<a[i].sname<<" "<<a[i].name<<" "<<a[i].patronymic<<" "<<a[i].position<<endl;
         }
     }
     //outfile<<"\n\n";
-    //outfile.close();
+    FILE.close();
 }
 void fun2(employee *a, int n, ofstream &FILE){
     //ofstream outfile;
@@ -72,12 +73,14 @@ int main(){
     infile.close();
     int w=-1;
     while(w!=0){
-        cout<<"Enter task:\n1)Display names of employee of chosen division\n2)Display data of all employee beyond 50 years old\n0)Quit\n";
+        cout<<"Enter task:\n1)Display names of employee of chosen division\n2)Display data of all employee beyond 50 years old\n0-or any other)Quit\n";
         cin>>w;
         switch(w){
-            case 1:
-                fun1(a,n);
-                break;
+            case 1:{
+                ofstream outfile;
+                outfile.open("outfile.txt");
+                fun1(a,n,outfile);
+                break;}
             case 2:{
                 ofstream outfile;
                 outfile.open("outfile.txt");
