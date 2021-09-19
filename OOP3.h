@@ -1,6 +1,7 @@
 #ifndef OOP_H
 
     #define OOP_H
+    #include<iostream>
     #include<string>
     #include <ctime>
     #include<fstream>
